@@ -30,7 +30,7 @@ namespace NPI_Registry.Web
                     {
                         string json = await response.Content.ReadAsStringAsync();
                         var result = JsonConvert.DeserializeObject<T>(json);
-                        return result;
+                        return result ?? default;
                     }
                     else
                     {
@@ -42,12 +42,12 @@ namespace NPI_Registry.Web
             {
                 Console.WriteLine(ex.Message);
             }
-            return default(T);
+            return default;
         }
 
         public static async Task<T> RunAsync<T>(string url, string urlParamters)
         {
-            var response = GetAsync<T>(url, urlParamters).GetAwaiter().GetResult();
+            var response = await GetAsync<T>(url, urlParamters);
             return response;
         }
     }
