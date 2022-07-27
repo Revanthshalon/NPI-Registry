@@ -1,8 +1,5 @@
 ﻿using NPI_Registry.DTO;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace NPI_Registry.NPIRegistry
@@ -14,7 +11,25 @@ namespace NPI_Registry.NPIRegistry
         public static async Task<HCPDTO> GetHCPDetails(int npi)
         {
             string urlParams = $@"?number={npi.ToString()}&version=2.1";
-            return await Web.API.RunAsync<HCPDTO>(host, urlParams);
+            return await Tools.API.RunAsync<HCPDTO>(host, urlParams);
         }
+
+        public static ICollection<NPIDTO> GetHCPList(string filepath)
+        {
+            ICollection<NPIDTO> list = (ICollection<NPIDTO>)Tools.CSV.ReadCsv(filepath);
+            return list;
+        }
+        public static async Task<ICollection<HCPDTO>> GetHCPDetailsList(IEnumerable<NPIDTO> NPIList)
+        {
+            List<HCPDTO> HCPDetails = new List<HCPDTO>();
+            foreach (var response in NPIList)
+            {
+                string urlParams = $@"?number={response.NPIId}&version=2.1";
+                var hcpDetails = await Tools.API.RunAsync<HCPDTO>(host, urlParams);
+                HCPDetails.Add(hcpDetails);
+            }
+            return HCPDetails;
+        }
+        
     }
 }

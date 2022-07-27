@@ -7,7 +7,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NPI_Registry.Web
+namespace NPI_Registry.Tools
 {
     internal class API
     {
