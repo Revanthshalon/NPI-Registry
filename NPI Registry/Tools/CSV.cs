@@ -11,14 +11,14 @@ namespace NPI_Registry.Tools
         public static IEnumerable<NPIDTO> ReadCsv(string path)
         {
             string[] lines = File.ReadAllLines(path);
-            IEnumerable<NPIDTO> result = lines.Select(line =>
+            IEnumerable<NPIDTO> result = lines[1..].Select(line =>
             {
                 string[] data = line.Split(",");
-                return new NPIDTO()
-                {
-                    UserWaveId = int.Parse(data[0]),
-                    NPIId = int.Parse(data[1])
-                };
+                    return new NPIDTO()
+                    {
+                        UserWaveId = int.Parse(data[0]),
+                        NPIId = int.Parse(data[1])
+                    };
             });
             return result;
         }
