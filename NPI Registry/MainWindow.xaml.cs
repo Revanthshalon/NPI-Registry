@@ -44,7 +44,8 @@ namespace NPI_Registry
                     FirstName = hcp.HCPDetails[0].UserDetails.FirstName,
                     LastName = hcp.HCPDetails[0].UserDetails.LastName,
                     CertificateLastUpdatedDate = hcp.HCPDetails[0].UserDetails.CertificationDate,
-                    Taxonomy = tax
+                    Taxonomy = tax,
+                    Status = hcp.HCPDetails[0].UserDetails.Status == "A"?"Active":"InActive",
                 };
                 responses.Add(details);
             }

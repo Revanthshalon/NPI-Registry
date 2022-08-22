@@ -39,6 +39,8 @@ namespace NPI_Registry.DTO
         public string Gender { get; set; } = string.Empty;
         [JsonProperty("last_updated")]
         public DateTime CertificationDate { get; set; }
+        [JsonProperty("status")]
+        public string Status { get; set; } = string.Empty ;
     }
     class Address
     {
