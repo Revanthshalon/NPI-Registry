@@ -39,10 +39,11 @@ namespace NPI_Registry
                 }
                 CSVDTO details = new CSVDTO()
                 {
+                    UserWaveId = hcp.UserWaveID,
                     NPI = hcp.HCPDetails[0].NPI,
                     FirstName = hcp.HCPDetails[0].UserDetails.FirstName,
                     LastName = hcp.HCPDetails[0].UserDetails.LastName,
-                    CertificationDate = hcp.HCPDetails[0].UserDetails.CertificationDate,
+                    CertificateLastUpdatedDate = hcp.HCPDetails[0].UserDetails.CertificationDate,
                     Taxonomy = tax
                 };
                 responses.Add(details);

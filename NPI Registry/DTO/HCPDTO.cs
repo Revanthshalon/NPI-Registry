@@ -9,6 +9,8 @@ namespace NPI_Registry.DTO
 {
     internal class HCPDTO
     {
+
+        public long UserWaveID { get; set; }
         [JsonProperty("results")]
         public List<HCPDetail> HCPDetails { get; set; }
     }
@@ -35,7 +37,7 @@ namespace NPI_Registry.DTO
         public string Credential { get; set; } = string.Empty;
         [JsonProperty("gender")]
         public string Gender { get; set; } = string.Empty;
-        [JsonProperty("certification_date")]
+        [JsonProperty("last_updated")]
         public DateTime CertificationDate { get; set; }
     }
     class Address

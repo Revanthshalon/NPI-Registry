@@ -26,6 +26,7 @@ namespace NPI_Registry.NPIRegistry
             {
                 string urlParams = $@"?number={response.NPIId}&version=2.1";
                 var hcpDetails = await Tools.API.RunAsync<HCPDTO>(host, urlParams);
+                hcpDetails.UserWaveID = response.UserWaveId;
                 HCPDetails.Add(hcpDetails);
             }
             return HCPDetails;
