@@ -15,6 +15,11 @@ namespace NPI_Registry.DTO
         public DateTime CertificateLastUpdatedDate { get; set; }
         public string Taxonomy { get; set; }
         public string Status { get; set; }
-
+        public string HouseAddress { get; set; }
+        public string StreetAddress { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+        public long PostalCode { get; set; }
+        public long Contact { get; set; }
     }
 }

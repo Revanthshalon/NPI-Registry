@@ -1,9 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NPI_Registry.DTO
 {
@@ -46,6 +43,8 @@ namespace NPI_Registry.DTO
     {
         [JsonProperty("country_code")]
         public string CountryCode { get; set; } = string.Empty;
+        [JsonProperty("address_purpose")]
+        public string AddressPurpose { get; set; } = string.Empty;
         [JsonProperty("country_name")]
         public string CountryName { get; set; } = string.Empty;
         [JsonProperty("address_1")]
@@ -57,7 +56,7 @@ namespace NPI_Registry.DTO
         [JsonProperty("state")]
         public string State { get; set; } = string.Empty;
         [JsonProperty("postal_code")]
-        public string PostalCode { get; set; } = string.Empty;
+        public long PostalCode { get; set; }
     }
     class Taxonomy
     {

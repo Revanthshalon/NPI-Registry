@@ -37,6 +37,16 @@ namespace NPI_Registry
                         tax = taxo.Description;
                     }
                 }
+                Address AddressDetails = new();
+
+                foreach(var address in hcp.HCPDetails[0].Addresses)
+                {
+                    if (address.AddressPurpose == "LOCATION")
+                    {
+                        AddressDetails = address;
+                    }
+                }
+
                 CSVDTO details = new CSVDTO()
                 {
                     UserWaveId = hcp.UserWaveID,
@@ -46,6 +56,11 @@ namespace NPI_Registry
                     CertificateLastUpdatedDate = hcp.HCPDetails[0].UserDetails.CertificationDate,
                     Taxonomy = tax,
                     Status = hcp.HCPDetails[0].UserDetails.Status == "A"?"Active":"InActive",
+                    HouseAddress = AddressDetails.HouseAddress,
+                    StreetAddress = AddressDetails.StreetAddress,
+                    City = AddressDetails.City,
+                    State = AddressDetails.State,
+                    PostalCode = AddressDetails.PostalCode
                 };
                 responses.Add(details);
             }
